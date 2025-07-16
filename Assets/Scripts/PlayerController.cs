@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
 
 
 public class PlayerController : MonoBehaviour
@@ -16,12 +18,20 @@ public class PlayerController : MonoBehaviour
 
     public bool isOnRope = false;
 
-    [SerializeField]
-    private float vidas = 3f;
+    public float vidas = 3f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        PlayerData datos = SaveManager.LoadPlayer();
+        if (datos != null && SceneManager.GetActiveScene().buildIndex == datos.escenaIndex)
+        {
+            vidas = datos.vidas;
+            Vector3 pos = new Vector3(datos.posicion[0], datos.posicion[1], datos.posicion[2]);
+            transform.position = pos;
+            Debug.Log("Datos del jugador cargados.");
+        }
     }
 
     // Update is called once per frame
@@ -64,7 +74,6 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0;
-            Debug.Log("En Suelo");
         }
     }
 
