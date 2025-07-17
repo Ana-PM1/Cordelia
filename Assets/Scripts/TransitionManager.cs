@@ -48,7 +48,7 @@ public class TransitionManager : MonoBehaviour
         if (rawLoadingImage != null)
             rawLoadingImage.gameObject.SetActive(true); // Mostrar imagen
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
 
         AsyncOperation operacion = SceneManager.LoadSceneAsync(nombreEscena);
         operacion.allowSceneActivation = false;
