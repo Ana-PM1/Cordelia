@@ -2,15 +2,34 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    
+    public enum Estado
+    {
+        Patrullando,
+        Persiguiendo,
+        Atacando,
+        Muerto
+    }
+
+    
+    [Header("Parámetros generales")]
     [SerializeField] private float velocidad = 2f;
-    [SerializeField] private float vidas = 2f;
+    [SerializeField] private float vidas = 3f;
+    [SerializeField] private float dañoAtaque = 1f;
+    [SerializeField] private float rangoAtaque = 1f;
+    [SerializeField] private float cooldownAtaque = 1f;
+
+    [Header("Puntos de patrulla")]
     [SerializeField] private Transform puntoA;
     [SerializeField] private Transform puntoB;
 
-    private Transform jugador;
-    private bool persiguiendo = false;
+    [Header("Ataque")]
+    [SerializeField] private Transform puntoAtaque;
 
+    private Estado estadoActual = Estado.Patrullando;
+    private Transform jugador;
     private Transform destinoActual;
+    private float tiempoUltimoAtaque = 0f;
 
     private void Start()
     {
@@ -19,15 +38,23 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (persiguiendo && jugador != null)
+        switch (estadoActual)
         {
-            Vector3 destino = new Vector3(jugador.position.x, transform.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
+            case Estado.Patrullando:
+                Patrullar();
+                break;
+            case Estado.Persiguiendo:
+                Perseguir();
+                break;
+            case Estado.Atacando:
+                Atacar();
+                break;
+            case Estado.Muerto:
+                // No hacer nada
+                break;
         }
-        else
-        {
-            Patrullar();
-        }
+
+        RevisarTransicionEstado();
     }
 
     private void Patrullar()
@@ -44,39 +71,98 @@ public class EnemyController : MonoBehaviour
             destinoActual = (destinoActual == puntoA) ? puntoB : puntoA;
         }
 
-        if (destinoActual != null)
+        
+        float direccion = destinoActual.position.x - transform.position.x;
+        transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
+        
+    }
+
+    private void Perseguir()
+    {
+        if (jugador == null) return;
+
+        Vector3 destino = new Vector3(jugador.position.x, transform.position.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, destino, velocidad * Time.deltaTime);
+
+        float direccion = jugador.position.x - transform.position.x;
+        transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
+    }
+
+    private void Atacar()
+    {
+        if (Time.time - tiempoUltimoAtaque >= cooldownAtaque)
         {
-            float direccion = destinoActual.position.x - transform.position.x;
-            if (direccion != 0)
-                transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
+            tiempoUltimoAtaque = Time.time;
+
+            Collider[] colliders = Physics.OverlapSphere(puntoAtaque.position, rangoAtaque);
+            foreach (Collider col in colliders)
+            {
+                if (col.CompareTag("Player"))
+                {
+                    PlayerController player = col.GetComponent<PlayerController>();
+                    if (player != null)
+                    {
+                        player.TakeDamage(dañoAtaque);
+                        Debug.Log("¡Ataque enemigo!");
+                    }
+                }
+            }
         }
     }
+
+    private void RevisarTransicionEstado()
+    {
+        if (estadoActual == Estado.Muerto) return;
+
+        if (jugador != null)
+        {
+            float distancia = Vector3.Distance(transform.position, jugador.position);
+
+            if (distancia <= rangoAtaque)
+                estadoActual = Estado.Atacando;
+            else
+                estadoActual = Estado.Persiguiendo;
+        }
+        else
+        {
+            estadoActual = Estado.Patrullando;
+        }
+    }
+
 
     public void DetectarJugador(Transform jugadorDetectado)
     {
         jugador = jugadorDetectado;
-        persiguiendo = true;
     }
 
     public void PerderJugador()
     {
         jugador = null;
-        persiguiendo = false;
     }
 
     public void TakeDamage(float damage)
     {
         vidas -= damage;
         Debug.Log($"{gameObject.name} recibio daño. Vidas restantes: {vidas}");
-        if (vidas <= 0)
+        if (vidas <= 0 && estadoActual != Estado.Muerto)
         {
-            Die();
+            estadoActual = Estado.Muerto;
+            Morir();
         }
     }
 
-    private void Die()
+    private void Morir()
     {
-        Debug.Log("Enemy died");
+        Debug.Log("Enemigo muerto");
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (puntoAtaque != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(puntoAtaque.position, rangoAtaque);
+        }
     }
 }

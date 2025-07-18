@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuPause : MonoBehaviour
 {
@@ -33,6 +34,13 @@ public class MenuPause : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
+    }
+
+    public void ReiniciarNivel()
+    {
+        // Borra datos anteriores
+        SaveManager.BorrarDatos();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // salir del juego

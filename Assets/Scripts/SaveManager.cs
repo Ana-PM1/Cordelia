@@ -33,4 +33,13 @@ public static class SaveManager
             return null;
         }
     }
+
+    public static void BorrarDatos()
+    {
+        string pathData = Application.persistentDataPath + "/player.save";
+        if (File.Exists(pathData))
+        {
+            File.Delete(pathData);
+        }
+    }
 }

@@ -32,6 +32,16 @@ public class PlayerController : MonoBehaviour
             transform.position = pos;
             Debug.Log("Datos del jugador cargados.");
         }
+        else
+        {
+            // Buscar el respawn en la escena
+            GameObject respawn = GameObject.FindGameObjectWithTag("Respawn");
+            if (respawn != null)
+            {
+                transform.position = respawn.transform.position;
+                Debug.Log("Respawn por defecto establecido.");
+            }
+        }
     }
 
     // Update is called once per frame
