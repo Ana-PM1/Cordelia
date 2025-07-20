@@ -3,7 +3,7 @@ using UnityEngine;
 public class Palanca : MonoBehaviour
 {
     // Son estados que controla el comportamiento de una palanca que activa o desactiva objetos o plataformas en el juego
-    [Header("Configuración de la Palanca")]
+    
     public enum TipoAccion
     {
         ActivarObjeto,
