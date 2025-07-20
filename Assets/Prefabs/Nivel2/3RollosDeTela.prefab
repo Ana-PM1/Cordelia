@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.70301
+      value: 1.2448199
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.70301
+      value: 1.2448199
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.70301
+      value: 1.2448199
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1100001
+      value: 7.3662663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2979001
+      value: 0.6614857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.78
+      value: 4.411169
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
       propertyPath: m_Name
       value: 3RollosDeTela
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe39180cc61120d42a39af7fb1a110b4, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -103,10 +107,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5782589, y: 0.6241795, z: 1}
-  m_Center: {x: -6.9495745, y: 0.3303402, z: 0}
+  m_Size: {x: 0.57825845, y: 0.6241794, z: 2.7141895}
+  m_Center: {x: -6.9495745, y: 0.3303402, z: -3.287696}
 --- !u!65 &8860240240275861294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,10 +128,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6278018, y: 0.6056018, z: 1}
-  m_Center: {x: -6.3550854, y: 0.32105136, z: 0}
+  m_Size: {x: 0.62780154, y: 0.6056017, z: 2.6312473}
+  m_Center: {x: -6.355086, y: 0.32105136, z: -3.2027032}
 --- !u!65 &2329330924323536035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,10 +149,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5844509, y: 0.37647536, z: 1}
-  m_Center: {x: -6.6430407, y: 0.8257487, z: 0}
+  m_Size: {x: 0.5844502, y: 0.3764754, z: 2.7473643}
+  m_Center: {x: -6.6430407, y: 0.8257486, z: -3.1518111}
 --- !u!65 &3543976854993723384
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,5 +172,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4420224, y: 0.17211932, z: 1}
-  m_Center: {x: -6.6461368, y: 1.1075122, z: 0}
+  m_Size: {x: 0.4420219, y: 0.17211926, z: 2.4926333}
+  m_Center: {x: -6.6461363, y: 1.1075122, z: -3.1484072}

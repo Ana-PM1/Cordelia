@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5081daf50cc3f049a73cb20a540aedd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.93
+      value: -12.88
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5081daf50cc3f049a73cb20a540aedd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3128
+      value: 15.873949
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5081daf50cc3f049a73cb20a540aedd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.22
+      value: 0.79973793
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5081daf50cc3f049a73cb20a540aedd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f5081daf50cc3f049a73cb20a540aedd, type: 3}
       propertyPath: m_Name
       value: CarreteEstambreAzul
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5081daf50cc3f049a73cb20a540aedd, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
