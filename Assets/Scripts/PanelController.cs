@@ -7,6 +7,7 @@ public class PanelController : MonoBehaviour
 
     public GameObject panelCredits;
     public GameObject panelConfiguration;
+    public GameObject panelInstructions;
 
     public void TogglePanelCredits()
     {
@@ -27,4 +28,15 @@ public class PanelController : MonoBehaviour
     {
         panelConfiguration.SetActive(false);
     }
+
+    public void TogglePanelInstructions()
+    {
+        panelInstructions.SetActive(!panelInstructions.activeSelf);
+    }
+
+    public void HidePanelInstructions()
+    {
+        panelInstructions.SetActive(false);
+    }
+
 }
