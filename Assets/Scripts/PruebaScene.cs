@@ -6,6 +6,6 @@ public class PruebaScene : MonoBehaviour
 
     public void CargarEscena()
     {
-        TransitionManager.Instance.CargarEscenaConTransicion(nomScene);
+        TransitionManager.Instance.CargarEscenaConTransicion(nomScene); // nombre de la escena a cargar
     }
 }

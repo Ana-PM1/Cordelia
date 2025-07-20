@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuPause : MonoBehaviour
 {
+    // Este script controla el menú de pausa del juego
+    // Permite pausar el juego, reanudarlo, reiniciar el nivel y salir del juego
+    // También permite abrir un menú de opciones
+    // El menú de pausa se activa al presionar la tecla Escape
     public GameObject pauseMenuUI;
     public GameObject opcionesMenuUI;
 
@@ -36,11 +40,16 @@ public class MenuPause : MonoBehaviour
         pauseMenuUI.SetActive(false);
     }
 
+    // reiniciar el nivel actual
+    // Borra datos anteriores y reinicia el nivel
+    // Utiliza el GameFlowManager para reiniciar el nivel
+    // Esto permite que el jugador comience de nuevo sin perder el progreso guardado
     public void ReiniciarNivel()
     {
         // Borra datos anteriores
+        Time.timeScale = 1f;
         SaveManager.BorrarDatos();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameFlowManager.Instance.IniciarNivel(SceneManager.GetActiveScene().name);
     }
 
     // salir del juego
@@ -49,7 +58,8 @@ public class MenuPause : MonoBehaviour
         Application.Quit();
         Debug.Log("Game is quitting");
     }
-
+    // Abre el menú de opciones
+    // Esto permite al jugador ajustar configuraciones del juego como volumen, resolucion, etc.
     public void OpenOptions()
     {
         opcionesMenuUI.SetActive(true);

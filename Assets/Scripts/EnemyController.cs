@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    
+    // Este script controla el comportamiento de un enemigo en el juego
+    // El enemigo patrulla entre dos puntos, persigue al jugador y ataca si está cerca
+    // También maneja la detección del jugador y la pérdida de su rastro
+
+    // Enumeración para los estados del enemigo
+    // Define los diferentes estados que puede tener el enemigo
     public enum Estado
     {
         Patrullando,
@@ -35,7 +40,9 @@ public class EnemyController : MonoBehaviour
     {
         destinoActual = puntoB;
     }
-
+    // Este método se llama en cada frame para actualizar el comportamiento del enemigo
+    // Dependiendo del estado actual, el enemigo patrulla, persigue al jugador o ataca
+    // También revisa las transiciones entre estados para cambiar el comportamiento según la situación
     private void Update()
     {
         switch (estadoActual)
@@ -56,7 +63,9 @@ public class EnemyController : MonoBehaviour
 
         RevisarTransicionEstado();
     }
-
+    // Métodos privados para manejar el comportamiento del enemigo
+    // Estos métodos se encargan de patrullar entre dos puntos, perseguir al jugador y atacar cuando está cerca
+    // Cada método actualiza la posición del enemigo y verifica si debe cambiar de estado
     private void Patrullar()
     {
         if (destinoActual == null) return;
@@ -76,7 +85,8 @@ public class EnemyController : MonoBehaviour
         transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
         
     }
-
+    // Este método se encarga de perseguir al jugador
+    // Si el jugador está dentro del rango de ataque, cambia al estado de ataque
     private void Perseguir()
     {
         if (jugador == null) return;
@@ -87,7 +97,9 @@ public class EnemyController : MonoBehaviour
         float direccion = jugador.position.x - transform.position.x;
         transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
     }
-
+    // Este método se encarga de atacar al jugador si está dentro del rango de ataque
+    // Utiliza Physics.OverlapSphere para detectar colisiones en un área alrededor del punto de ataque
+    // Si el jugador está dentro de esta área, se le aplica el daño
     private void Atacar()
     {
         if (Time.time - tiempoUltimoAtaque >= cooldownAtaque)
@@ -109,7 +121,9 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-
+    // Este método revisa las condiciones para cambiar el estado del enemigo
+    // Si el jugador está cerca, cambia al estado de ataque
+    // Si el jugador se aleja, cambia al estado de persecución o patrullaje
     private void RevisarTransicionEstado()
     {
         if (estadoActual == Estado.Muerto) return;
@@ -129,17 +143,20 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
+    // Métodos públicos para detectar y perder al jugador
+    // Estos métodos permiten que el enemigo detecte al jugador cuando entra en su rango de visión
     public void DetectarJugador(Transform jugadorDetectado)
     {
         jugador = jugadorDetectado;
     }
-
+    // Este método se llama cuando el jugador sale del rango de visión del enemigo
+    // Permite que el enemigo pierda el rastro del jugador y vuelva a patrullar
     public void PerderJugador()
     {
         jugador = null;
     }
-
+    // Método para aplicar daño al enemigo
+    // Reduce las vidas del enemigo y verifica si ha muerto
     public void TakeDamage(float damage)
     {
         vidas -= damage;
@@ -150,13 +167,15 @@ public class EnemyController : MonoBehaviour
             Morir();
         }
     }
-
+    // Método para manejar la muerte del enemigo
+    // Destruye el objeto del enemigo y emite un mensaje 
     private void Morir()
     {
         Debug.Log("Enemigo muerto");
         Destroy(gameObject);
     }
-
+    // Método para dibujar el área de ataque en el editor
+    // Esto ayuda a visualizar el área de ataque del enemigo durante el desarrollo
     private void OnDrawGizmosSelected()
     {
         if (puntoAtaque != null)

@@ -9,6 +9,7 @@ public class VidaPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Verifica si el objeto que colisiona es el jugador
         PlayerController jugador = other.GetComponent<PlayerController>();
         if (jugador != null)
         {

@@ -14,6 +14,7 @@ public class VistaController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Si el objeto que entra en el trigger es el jugador, llama al método de detección del enemigo
         if (other.CompareTag("Player"))
         {
             enemigo.DetectarJugador(other.transform);
@@ -22,6 +23,7 @@ public class VistaController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // Si el objeto que sale del trigger es el jugador, llama al método de pérdida de jugador del enemigo
         if (other.CompareTag("Player"))
         {
             enemigo.PerderJugador();
