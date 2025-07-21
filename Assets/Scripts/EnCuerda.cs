@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnCuerda : MonoBehaviour
 {
+    // Este script permite al jugador interactuar con una cuerda
+    // Cuando el jugador entra en el trigger, puede agarrar la cuerda
+
 
     [SerializeField] private bool isOnRope = false;
     [SerializeField] private Transform techo;
@@ -15,7 +18,9 @@ public class EnCuerda : MonoBehaviour
         
     }
 
-    
+    // Este método se llama cada frame para verificar si el jugador está en la cuerda
+    // Si el jugador está en la cuerda y supera la altura del techo, se ajusta su posición
+    // y se desactiva la gravedad para que pueda deslizarse por la cuerda
     void Update()
     {
         if(isOnRope && player.position.y > techo.position.y)
@@ -27,7 +32,9 @@ public class EnCuerda : MonoBehaviour
         }
        
     }
-
+    // Este método se llama cuando el jugador entra en el trigger de la cuerda
+    // Si el jugador presiona el botón de acción y no está en la cuerda, se activa la cuerda
+    // Si el jugador ya está en la cuerda, se desactiva la cuerda
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") )
