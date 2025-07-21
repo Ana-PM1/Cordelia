@@ -25,6 +25,7 @@ public class TargetCuerda : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Jugador en rango de cuerda");
             jugadorEnRango = true;
         }
     }
