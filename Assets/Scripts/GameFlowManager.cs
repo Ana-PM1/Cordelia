@@ -28,7 +28,7 @@ public class GameFlowManager : MonoBehaviour
         // Carga configuraciones
         ConfigManager.Instance.CargarConfiguracion();
 
-        SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Main Menu", LoadSceneMode.Additive);
 
         // Cargar menú principal después de sistema
         //TransitionManager.Instance.CargarEscenaConTransicion("Menu");
@@ -44,7 +44,7 @@ public class GameFlowManager : MonoBehaviour
     // Utiliza TransitionManager para cargar la escena del menú principal
     public void VolverAlMenu()
     {
-        TransitionManager.Instance.CargarEscenaConTransicion("Menu");
+        TransitionManager.Instance.CargarEscenaConTransicion("Main Menu");
     }
     // Método para verificar si hay una partida guardada
     // Utiliza SaveManager para comprobar si existen datos guardados

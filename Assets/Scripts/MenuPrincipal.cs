@@ -34,7 +34,7 @@ public class MenuPrincipal : MonoBehaviour
     public void IniciarNuevoJuego()
     {
         SaveManager.BorrarDatos(); // Limpia datos viejos
-        TransitionManager.Instance.CargarEscenaConTransicion("SampleScene"); // nombre exacto de tu primer escena
+        TransitionManager.Instance.CargarEscenaConTransicion("Nivel1"); // nombre exacto de tu primer escena
     }
     // Método para salir del juego
     public void SalirJuego()

@@ -33,16 +33,33 @@ public class TransitionManager : MonoBehaviour
             canvasCarga.SetActive(false); // Se inicia oculto
     }
 
-    private void Start()
-    {
-        
-        
-    }
+    
 
     public void CargarEscenaConTransicion(string nombreEscena)
     {
         // Inicia la corrutina para cargar la escena con transición
         StartCoroutine(CargarEscena(nombreEscena));
+    }
+
+    public void DesCargarEscenasAnteriores(string nombreEscena)
+        {
+            // Desactiva las escenas anteriores excepto la actual
+            StartCoroutine(DesactivarEscenas(nombreEscena));
+        }
+    private IEnumerator DesactivarEscenas(string nombreEscena)
+    {
+        // Espera un momento antes de desactivar las escenas
+        yield return new WaitForSeconds(0.1f);
+
+        // Desactiva todas las escenas excepto la que se está cargando
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            Scene escena = SceneManager.GetSceneAt(i);
+            if (escena.name != nombreEscena)
+            {
+                yield return SceneManager.UnloadSceneAsync(escena);
+            }
+        }
     }
 
     // Corrutina para cargar la escena con una transición
@@ -61,6 +78,7 @@ public class TransitionManager : MonoBehaviour
         yield return new WaitForSeconds(4f);// Simula un tiempo de carga
 
         // Desactiva el canvas de carga si está activo
+        
         AsyncOperation operacion = SceneManager.LoadSceneAsync(nombreEscena, LoadSceneMode.Additive);
         // Carga la nueva escena de forma asíncrona y aditiva
         operacion.allowSceneActivation = false; // Evita que la escena se active inmediatamente
@@ -78,6 +96,7 @@ public class TransitionManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.5f);
                 operacion.allowSceneActivation = true;
+                
                 // Scene nuevaEscena = SceneManager.GetSceneByName(nombreEscena);// Verifica si la escena se ha cargado correctamente
                 // if (nuevaEscena.IsValid())
                 // {
@@ -86,7 +105,11 @@ public class TransitionManager : MonoBehaviour
             }
 
             yield return null;
+    
         }
+        
+
+        
 
         if (SceneManager.sceneCount > 1)
         {
@@ -100,6 +123,8 @@ public class TransitionManager : MonoBehaviour
 
             }
         }
+        if (canvasCarga != null)
+            canvasCarga.SetActive(false); // Oculta el canvas de carga
     }
 
 }
