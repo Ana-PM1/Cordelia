@@ -4,6 +4,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveManager 
 {
+    
+
     // Guarda los datos del jugador en un archivo
     public static void SavePlayer(PlayerController playerController)
     {

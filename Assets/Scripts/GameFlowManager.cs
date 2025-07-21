@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameFlowManager : MonoBehaviour
 {
     public static GameFlowManager Instance; //Global instance para acceder desde otros scripts
+    
 
     // Este script controla el flujo del juego
     // Permite iniciar niveles, volver al menú principal y verificar si hay partidas guardadas
@@ -26,8 +28,11 @@ public class GameFlowManager : MonoBehaviour
         // Carga configuraciones
         ConfigManager.Instance.CargarConfiguracion();
 
+        SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+
         // Cargar menú principal después de sistema
-        TransitionManager.Instance.CargarEscenaConTransicion("Menu");
+        //TransitionManager.Instance.CargarEscenaConTransicion("Menu");
+
     }
     // Método para iniciar un nivel específico
     // Utiliza TransitionManager para cargar la escena con transición

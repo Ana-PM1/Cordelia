@@ -13,6 +13,7 @@ public class Checkpoint : MonoBehaviour
             {
                 SaveManager.SavePlayer(playerController);
                 Debug.Log("¡Checkpoint guardado!");
+
             }
         }
     }

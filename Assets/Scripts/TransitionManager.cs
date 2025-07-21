@@ -12,7 +12,7 @@ public class TransitionManager : MonoBehaviour
     public GameObject canvasCarga;       
     public Text loadingText;
     public RawImage rawLoadingImage; 
-    public GameObject canvasViejo;
+    //public GameObject canvasViejo;
     
 
     private void Awake()
@@ -35,11 +35,8 @@ public class TransitionManager : MonoBehaviour
 
     private void Start()
     {
-        // Si la escena actual es "Sistema", carga el menú principal
-        if (SceneManager.GetActiveScene().name == "Sistema")
-        {
-            CargarEscenaConTransicion("Menu");
-        }
+        
+        
     }
 
     public void CargarEscenaConTransicion(string nombreEscena)
@@ -53,7 +50,7 @@ public class TransitionManager : MonoBehaviour
     {
         if (canvasCarga != null)
             canvasCarga.SetActive(true);
-            canvasViejo.SetActive(false); 
+            //canvasViejo.SetActive(false); 
 
         if (loadingText != null)
             loadingText.text = "Cargando...";
@@ -64,18 +61,8 @@ public class TransitionManager : MonoBehaviour
         yield return new WaitForSeconds(4f);// Simula un tiempo de carga
 
         // Desactiva el canvas de carga si está activo
-        if (SceneManager.sceneCount > 1)
-        {
-            for (int i = 0; i < SceneManager.sceneCount; i++)
-            {
-                Scene escena = SceneManager.GetSceneAt(i);
-                // Desactiva el canvas de carga si la escena no es "Sistema"
-                if (escena.name != "Sistema")
-                    yield return SceneManager.UnloadSceneAsync(escena);
-            }
-        }
-        // Carga la nueva escena de forma asíncrona y aditiva
         AsyncOperation operacion = SceneManager.LoadSceneAsync(nombreEscena, LoadSceneMode.Additive);
+        // Carga la nueva escena de forma asíncrona y aditiva
         operacion.allowSceneActivation = false; // Evita que la escena se active inmediatamente
 
         // Espera hasta que la operación de carga esté completa
@@ -91,14 +78,27 @@ public class TransitionManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.5f);
                 operacion.allowSceneActivation = true;
-                Scene nuevaEscena = SceneManager.GetSceneByName(nombreEscena);// Verifica si la escena se ha cargado correctamente
-                if (nuevaEscena.IsValid())
-                {
-                    SceneManager.SetActiveScene(nuevaEscena);
-                }
+                // Scene nuevaEscena = SceneManager.GetSceneByName(nombreEscena);// Verifica si la escena se ha cargado correctamente
+                // if (nuevaEscena.IsValid())
+                // {
+                //     SceneManager.SetActiveScene(nuevaEscena);
+                // }
             }
 
             yield return null;
+        }
+
+        if (SceneManager.sceneCount > 1)
+        {
+            Debug.Log("Desactivando escenas anteriores");
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                Scene escena = SceneManager.GetSceneAt(i);
+                // Desactiva el canvas de carga si la escena no es "Sistema"
+                if (escena.name != "SistemaBase" && escena.name != nombreEscena)
+                    yield return SceneManager.UnloadSceneAsync(escena);
+
+            }
         }
     }
 

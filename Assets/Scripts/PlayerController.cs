@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         PlayerData datos = SaveManager.LoadPlayer(); // Carga los datos del jugador guardados
         // Si hay datos guardados y la escena es la misma que la guardada, cargar los datos
         // Si no, buscar el respawn por defecto
-        if (datos != null && SceneManager.GetActiveScene().buildIndex == datos.escenaIndex)
+        if (datos != null)
         {
             vidas = datos.vidas;
             Vector3 pos = new Vector3(datos.posicion[0], datos.posicion[1], datos.posicion[2]);

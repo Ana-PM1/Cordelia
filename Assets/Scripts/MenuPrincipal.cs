@@ -7,6 +7,7 @@ public class MenuPrincipal : MonoBehaviour
 {
     
     [SerializeField] private Button botonContinuar;
+    public PlayerData verPlayerData; // Instancia de PlayerData para almacenar los datos del jugador
 
     private void Start()
     {
@@ -15,17 +16,14 @@ public class MenuPrincipal : MonoBehaviour
         {
             botonContinuar.gameObject.SetActive(true);
         }
-        else
-        {
-            botonContinuar.gameObject.SetActive(false);
-        }
+        
     }
     // Método para cargar la escena del juego
     // Si hay datos guardados, carga la escena guardada
     public void Continuar()
     {
         PlayerData data = SaveManager.LoadPlayer();
-
+        verPlayerData = SaveManager.LoadPlayer(); // Asigna los datos cargados a la instancia de PlayerData
         if (data != null)
         {
             TransitionManager.Instance.CargarEscenaConTransicion(data.escenaNombre); // nombre de la escena guardada
@@ -36,7 +34,7 @@ public class MenuPrincipal : MonoBehaviour
     public void IniciarNuevoJuego()
     {
         SaveManager.BorrarDatos(); // Limpia datos viejos
-        TransitionManager.Instance.CargarEscenaConTransicion("Nivel1"); // nombre exacto de tu primer escena
+        TransitionManager.Instance.CargarEscenaConTransicion("SampleScene"); // nombre exacto de tu primer escena
     }
     // Método para salir del juego
     public void SalirJuego()
