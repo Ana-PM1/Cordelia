@@ -6,18 +6,8 @@ public class PanelController : MonoBehaviour
 {
 
     public GameObject panelCredits;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject panelConfiguration;
+    public GameObject panelInstructions;
 
     public void TogglePanelCredits()
     {
@@ -28,4 +18,25 @@ public class PanelController : MonoBehaviour
     {
         panelCredits.SetActive(false);
     }
+
+    public void TogglePanelConfiguration()
+    {
+        panelConfiguration.SetActive(!panelConfiguration.activeSelf);
+    }
+
+    public void HidePanelConfiguration()
+    {
+        panelConfiguration.SetActive(false);
+    }
+
+    public void TogglePanelInstructions()
+    {
+        panelInstructions.SetActive(!panelInstructions.activeSelf);
+    }
+
+    public void HidePanelInstructions()
+    {
+        panelInstructions.SetActive(false);
+    }
+
 }
