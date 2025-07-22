@@ -7779,7 +7779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c3b11a57233eb4bafcabc82f57e0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1045830102}
   offset: {x: -0.67, y: 0.77, z: -12.6}
   minY: -50
   maxY: 50
@@ -8187,6 +8187,79 @@ Transform:
   - {fileID: 1362942886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &869561008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.7300001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937590858920687690, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_Name
+      value: Cordelia
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937590858920687690, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.66
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
 --- !u!1001 &877773118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9070,6 +9143,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 971563163549681820, guid: 5f63edeb90c943c4e85dca4f1cb32a08, type: 3}
   m_PrefabInstance: {fileID: 1034808055}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1045830102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+  m_PrefabInstance: {fileID: 869561008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1060559496
 PrefabInstance:
@@ -18087,4 +18165,5 @@ SceneRoots:
   - {fileID: 1002838547}
   - {fileID: 691330851}
   - {fileID: 1451266696}
+  - {fileID: 869561008}
   - {fileID: 1659978122}
