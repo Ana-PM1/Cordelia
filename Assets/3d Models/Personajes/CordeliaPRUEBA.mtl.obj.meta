@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7cad6e3e06d1f1349952dbf8c13092ae
+guid: 69e5a62df00af56478b1f7689dd951b2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -76,12 +76,22 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips:
-  - f50017034d1db6b45a441e429913bef1
+  - c1c8a2c2321d102409ae8ce58c9990b0
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: CordeliaPRUEBA.mtl(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: default
+      parentName: CordeliaPRUEBA.mtl(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
