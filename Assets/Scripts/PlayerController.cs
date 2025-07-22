@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections;
 
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     
     private Rigidbody rb;
+    private Animator animator;
     private int jumpCount = 0;
     private int maxJumps = 2;
     private bool isGrounded = false;
@@ -23,13 +25,21 @@ public class PlayerController : MonoBehaviour
     public float vidas = 3f;
 
     private float ultimaVelocidadY;
-    [SerializeField] private float umbralDañoCaída = -10f;
-    [SerializeField] private float multiplicadorDaño = 1f; 
+    [SerializeField] private float umbralDañoCaída = -20f;
+    [SerializeField] private float multiplicadorDaño = 1f;
+
+    
+
+    [SerializeField]
+    private Transform modeloVisual;
+    private bool mirandoIzquierda = false;
+     
 
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
 
         PlayerData datos = SaveManager.LoadPlayer(); // Carga los datos del jugador guardados
         // Si hay datos guardados y la escena es la misma que la guardada, cargar los datos
@@ -76,7 +86,12 @@ public class PlayerController : MonoBehaviour
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             Vector3 movement = new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime;
-            transform.Translate(movement);  
+            transform.Translate(movement);
+            animator.SetFloat("velocidadMov", Mathf.Abs(horizontalInput));
+            if (horizontalInput != 0)
+            {
+                MirarDireccion(horizontalInput);
+            }
         } 
     }
     // Salto del personaje
@@ -89,6 +104,16 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
+            animator.SetBool("saltando", true);
+        }
+    }
+
+    private void MirarDireccion(float horizontalInput)
+    {
+        if ((horizontalInput < 0 && !mirandoIzquierda) || (horizontalInput > 0 && mirandoIzquierda))
+        {
+            mirandoIzquierda = !mirandoIzquierda;
+            modeloVisual.eulerAngles = new Vector3(0, mirandoIzquierda ? 180 : 0, 0);
         }
     }
     
@@ -100,6 +125,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0;
+            animator.SetBool("saltando", false);
 
             if (ultimaVelocidadY < umbralDañoCaída)
             {
@@ -124,6 +150,13 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
+        animator.SetTrigger("morir");
+        StartCoroutine(EsperarYMorir());
+
+    }
+    private IEnumerator EsperarYMorir()
+    {
+        yield return new WaitForSeconds(2.8f); // duración del clip
         Destroy(gameObject);
     }
     // Gana vida al jugador
