@@ -870,7 +870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &444434964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,6 +947,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1901864470}
+  - {fileID: 1134681109}
   - {fileID: 1020479880}
   - {fileID: 610267028}
   - {fileID: 583536562}
@@ -1611,8 +1612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pero no te preocupes, nuestra protagonista siempre ser\xE1 bienvenida
-    para una \xFAltima funci\xF3n."
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a032239b4110454b81a898cbfe93aec, type: 2}
   m_sharedMaterial: {fileID: 5485828784090367102, guid: 6a032239b4110454b81a898cbfe93aec, type: 2}
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Absurdo es creer que ten\xEDas la posibilidad de escapar..."
+  m_text: "Ya nada te ata al pasado... \nDesde ahora, tu decides tu destino, felicidades."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a032239b4110454b81a898cbfe93aec, type: 2}
   m_sharedMaterial: {fileID: 5485828784090367102, guid: 6a032239b4110454b81a898cbfe93aec, type: 2}
@@ -2705,6 +2705,81 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5290912366892358404, guid: 76d0561b453432c498bd95f207410c80, type: 3}
   m_PrefabInstance: {fileID: 2439418733524825973}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1134681108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134681109}
+  - component: {fileID: 1134681111}
+  - component: {fileID: 1134681110}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1134681109
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134681108}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444434967}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.3937, y: 239.17285}
+  m_SizeDelta: {x: -157.8176, y: -548.4824}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1134681110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134681108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.032103952, g: 0.032103952, b: 0.10188681, a: 0.8117647}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1134681111
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134681108}
+  m_CullTransparentMesh: 1
 --- !u!1 &1164754476
 GameObject:
   m_ObjectHideFlags: 0
@@ -4885,7 +4960,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3e0535824b2804243b68406d3946865d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e18e0a7d89b5aba489b22be81e7f4e4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
