@@ -113,7 +113,8 @@ public class PlayerController : MonoBehaviour
         if ((horizontalInput < 0 && !mirandoIzquierda) || (horizontalInput > 0 && mirandoIzquierda))
         {
             mirandoIzquierda = !mirandoIzquierda;
-            modeloVisual.eulerAngles = new Vector3(0, mirandoIzquierda ? 180 : 0, 0);
+    
+            modeloVisual.eulerAngles = new Vector3(0, mirandoIzquierda ? 270 : 90, 0);
         }
     }
     

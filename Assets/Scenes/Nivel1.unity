@@ -2375,8 +2375,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.62897253, y: 2.8287063, z: 1.0223782}
+  m_Center: {x: 0.023800611, y: 1.4842713, z: 0.011189103}
 --- !u!4 &1359039648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
@@ -3722,6 +3722,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 638702226029912924, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.15
@@ -3732,7 +3736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7300001
+      value: -4.06
       objectReference: {fileID: 0}
     - target: {fileID: 1272377061862974192, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3787,6 +3791,18 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
@@ -3801,6 +3817,13 @@ PrefabInstance:
     - target: {fileID: 4489004462055248070, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051532191568315795, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Spine'\n\tFrom animation clip
+        'santing death'"
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2060632190286798564, guid: 7b6efd06b5671ef49ad9685f13d6c1ee, type: 3}
