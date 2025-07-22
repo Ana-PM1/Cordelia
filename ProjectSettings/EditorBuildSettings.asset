@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel1.unity
     guid: 7b30d9526596dfe488ef1fb4292cb4c7
+  - enabled: 1
+    path: Assets/Scenes/Cinematica.unity
+    guid: a129fadd44205684e989b43326856ddf
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
