@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - SiguienteNivel
   layers:
   - Default
   - TransparentFX

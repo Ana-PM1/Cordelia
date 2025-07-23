@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     
 
     public static GameManager Instance; // Global instance to access from other scripts
+    
 
 
     void Update()

@@ -22,19 +22,19 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float vidas = 3f;
     [SerializeField] private float dañoAtaque = 1f;
     [SerializeField] private float rangoAtaque = 1f;
-    [SerializeField] private float cooldownAtaque = 1f;
+    [SerializeField] protected float cooldownAtaque = 1f;
 
     [Header("Puntos de patrulla")]
     [SerializeField] private Transform puntoA;
     [SerializeField] private Transform puntoB;
 
     [Header("Ataque")]
-    [SerializeField] private Transform puntoAtaque;
+    [SerializeField] protected Transform puntoAtaque;
 
-    private Estado estadoActual = Estado.Patrullando;
-    private Transform jugador;
+    protected Estado estadoActual = Estado.Patrullando;
+    protected Transform jugador;
     private Transform destinoActual;
-    private float tiempoUltimoAtaque = 0f;
+    protected float tiempoUltimoAtaque = 0f;
 
     private void Start()
     {
@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
     // Este método se llama en cada frame para actualizar el comportamiento del enemigo
     // Dependiendo del estado actual, el enemigo patrulla, persigue al jugador o ataca
     // También revisa las transiciones entre estados para cambiar el comportamiento según la situación
-    private void Update()
+    protected virtual void Update()
     {
         switch (estadoActual)
         {
@@ -82,7 +82,10 @@ public class EnemyController : MonoBehaviour
 
         
         float direccion = destinoActual.position.x - transform.position.x;
-        transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
+        // transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
+        transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, Mathf.Sign(direccion) > 0 ? 0 : 180, 0 );
+
+
         
     }
     // Este método se encarga de perseguir al jugador
@@ -100,7 +103,7 @@ public class EnemyController : MonoBehaviour
     // Este método se encarga de atacar al jugador si está dentro del rango de ataque
     // Utiliza Physics.OverlapSphere para detectar colisiones en un área alrededor del punto de ataque
     // Si el jugador está dentro de esta área, se le aplica el daño
-    private void Atacar()
+    protected virtual void Atacar()
     {
         if (Time.time - tiempoUltimoAtaque >= cooldownAtaque)
         {
