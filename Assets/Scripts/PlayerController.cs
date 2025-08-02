@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform modeloVisual;
     private bool mirandoIzquierda = false;
+
+    public GameObject[] vidasUi;
      
 
     
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+
 
         PlayerData datos = SaveManager.LoadPlayer(); // Carga los datos del jugador guardados
         // Si hay datos guardados y la escena es la misma que la guardada, cargar los datos
@@ -61,6 +64,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Respawn por defecto establecido");
             }
         }
+
+        ActualizarUIVida(); // Actualiza la UI de vida al iniciar
     }
 
     // Update is called once per frame
@@ -142,6 +147,7 @@ public class PlayerController : MonoBehaviour
     {
         vidas -= damage;
         Debug.Log($"{gameObject.name} recibió daño. Vidas restantes: {vidas}");
+        ActualizarUIVida();
         if (vidas <= 0)
         {
             Die();
@@ -171,6 +177,7 @@ public class PlayerController : MonoBehaviour
     {
         vidas += cantidad;
         Debug.Log("Vida aumentada. Vidas actuales: " + vidas);
+        ActualizarUIVida();     
     }
 
     
@@ -181,6 +188,21 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SiguienteNivel();
         }
     }
+    private void ActualizarUIVida()
+    {
+        for (int i = 0; i < vidasUi.Length; i++)
+        {
+            if (i < vidas)
+            {
+                vidasUi[i].SetActive(true);
+            }
+            else
+            {
+                vidasUi[i].SetActive(false);
+            }
+        }
+    }
+
 
     
     
