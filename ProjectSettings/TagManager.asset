@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - SiguienteNivel
+  - Caminar
   layers:
   - Default
   - TransparentFX

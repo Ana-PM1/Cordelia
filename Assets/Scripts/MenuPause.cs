@@ -57,6 +57,7 @@ public class MenuPause : MonoBehaviour
     // salir del juego
     public void QuitGame()
     {
+        TransitionManager.Instance.DesCargarEscenasAnteriores(SceneManager.GetActiveScene().name);
         TransitionManager.Instance.CargarEscenaConTransicion("Main Menu");
         
     }
