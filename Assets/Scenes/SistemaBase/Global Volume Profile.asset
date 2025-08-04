@@ -115,7 +115,7 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.75463617, z: 0.97389096, w: 0}
+    m_Value: {x: 1, y: 0.48709303, z: 0.9337965, w: 0}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 0.43461338, y: 0.39321464, z: 1, w: 0}
@@ -326,7 +326,7 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.04150939, g: 0.04150939, b: 0.04150939, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
@@ -335,7 +335,7 @@ MonoBehaviour:
     m_Value: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.78
+    m_Value: 0.59
   rounded:
     m_OverrideState: 0
     m_Value: 0

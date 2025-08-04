@@ -7,21 +7,20 @@ public class GameManager : MonoBehaviour
     
 
     public static GameManager Instance; // Global instance to access from other scripts
+    public string[] escenasPermitidas = { "Nivel1", "Nivel2", "Nivel3" };
+    
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && EstaEnNivel())
         {
-            Debug.Log("Escape presionado");
             if (SceneManager.GetSceneByName("MenuPausa").isLoaded)
             {
-                Debug.Log("Ocultando menú");
                 OcultarMenu();
             }
             else
             {
-                Debug.Log("Mostrando menú");
                 MostrarMenu();
             }
         }
@@ -51,7 +50,19 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentLevel);
     }
 
+    bool EstaEnNivel()
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            string nombre = SceneManager.GetSceneAt(i).name;
 
+            if (nombre.StartsWith("Nivel")) // Ej: Nivel1, Nivel2, etc.
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     [NaughtyAttributes.Button]
 

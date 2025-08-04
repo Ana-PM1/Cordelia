@@ -82,7 +82,10 @@ public class EnemyController : MonoBehaviour
 
         
         float direccion = destinoActual.position.x - transform.position.x;
-        transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
+        // transform.localScale = new Vector3(Mathf.Sign(direccion), 1, 1);
+        transform.GetChild(0).transform.localRotation = Quaternion.Euler(0, Mathf.Sign(direccion) > 0 ? 0 : 180, 0 );
+
+
         
     }
     // Este método se encarga de perseguir al jugador

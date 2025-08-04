@@ -11,7 +11,7 @@ public class TransitionManager : MonoBehaviour
     [Header("Elementos de UI de carga")]
     public GameObject canvasCarga;       
     public Text loadingText;
-    public RawImage rawLoadingImage; 
+    
     //public GameObject canvasViejo;
     
 
@@ -72,8 +72,7 @@ public class TransitionManager : MonoBehaviour
         if (loadingText != null)
             loadingText.text = "Cargando...";
 
-        if (rawLoadingImage != null)
-            rawLoadingImage.gameObject.SetActive(true); // Mostrar imagen
+       
 
         yield return new WaitForSeconds(4f);// Simula un tiempo de carga
 
@@ -88,9 +87,7 @@ public class TransitionManager : MonoBehaviour
         {
             float progreso = Mathf.Clamp01(operacion.progress / 0.9f);
 
-            // Si quieres simular progreso con escala:
-            if (rawLoadingImage != null)
-                rawLoadingImage.rectTransform.localScale = new Vector3(progreso, 1f, 1f);
+            
             // Actualiza el texto de carga
             if (operacion.progress >= 0.9f)
             {
