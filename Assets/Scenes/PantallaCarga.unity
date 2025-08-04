@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 96f3df22bc9429949963e69d2ed54f2c, type: 3}
+  m_Texture: {fileID: 2800000, guid: b3cd80d41304ffa42b0e9e5a0f015d3b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -941,7 +941,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasCarga: {fileID: 39481046}
   loadingText: {fileID: 1559326345}
-  rawLoadingImage: {fileID: 197117137}
 --- !u!4 &547142269
 Transform:
   m_ObjectHideFlags: 0
@@ -2570,7 +2569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 359, y: -213}
+  m_AnchoredPosition: {x: 411.5, y: -217}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1559326344
@@ -2602,11 +2601,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: f12b790a12576e243817700c0ceb78db, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 81
     m_Alignment: 0
     m_AlignByGeometry: 0

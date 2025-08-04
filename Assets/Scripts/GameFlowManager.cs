@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+using System.Collections;
 
 public class GameFlowManager : MonoBehaviour
 {
@@ -29,6 +31,7 @@ public class GameFlowManager : MonoBehaviour
         ConfigManager.Instance.CargarConfiguracion();
 
         SceneManager.LoadScene("Main Menu", LoadSceneMode.Additive);
+    
 
         // Cargar menú principal después de sistema
         //TransitionManager.Instance.CargarEscenaConTransicion("Menu");
@@ -51,5 +54,47 @@ public class GameFlowManager : MonoBehaviour
     public bool HayPartidaGuardada()
     {
         return SaveManager.ExistePartidaGuardada();
+    }
+
+    // ✅ Nuevo: Inicia el flujo con Intro antes del primer nivel
+    public void IniciarNuevoJuego()
+    {
+        SaveManager.BorrarDatos();
+        StartCoroutine(FlujoNuevoJuego());
+    }
+
+    private IEnumerator FlujoNuevoJuego()
+    {
+        // 1. Cargar escena Intro aditivamente
+        AsyncOperation loadIntro = SceneManager.LoadSceneAsync("Intro", LoadSceneMode.Additive);
+        yield return loadIntro;
+
+        // 2. Buscar el VideoPlayer en la escena Intro
+        VideoPlayer video = null;
+        Scene introScene = SceneManager.GetSceneByName("Intro");
+        foreach (GameObject root in introScene.GetRootGameObjects())
+        {
+            video = root.GetComponentInChildren<VideoPlayer>();
+            if (video != null) break;
+        }
+
+        if (video != null)
+        {
+            bool videoTerminado = false;
+            video.loopPointReached += (vp) => { videoTerminado = true; };
+
+            // 3. Esperar a que termine el video o que el jugador presione tecla
+            while (!videoTerminado && !Input.anyKeyDown)
+            {
+                yield return null;
+            }
+        }
+
+        // 4. Descargar Intro
+        AsyncOperation unloadIntro = SceneManager.UnloadSceneAsync("Intro");
+        yield return unloadIntro;
+
+        // 5. Cargar Nivel1 aditivamente
+        TransitionManager.Instance.CargarEscenaConTransicion("Nivel1");
     }
 }

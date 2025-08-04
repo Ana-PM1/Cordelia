@@ -1,43 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class TutorialUI : MonoBehaviour
+public class TutorialTrigger : MonoBehaviour
 {
-    public GameObject hudText; // Referencia al texto del HUD
-    public KeyCode keyToPress = KeyCode.E;
+    [Header("Texto asociado a este trigger")]
+    public GameObject tutorialText; // Texto que se activarÃ¡ al entrar
 
-    private bool playerInRange = false;
-    private bool hasInteracted = false;
+    void Start()
+    {
+        if (tutorialText != null)
+            tutorialText.SetActive(false); // Asegurarse que estÃ¡ desactivado al inicio
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasInteracted)
+        if (other.CompareTag("Player") && tutorialText != null)
         {
-            hudText.SetActive(true);
-            playerInRange = true;
+            tutorialText.SetActive(true);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && tutorialText != null)
         {
-            hudText.SetActive(false);
-            playerInRange = false;
-        }
-    }
-
-    void Update()
-    {
-        if (playerInRange && !hasInteracted && Input.GetKeyDown(keyToPress))
-        {
-            // Acción que quieres que ocurra
-            Debug.Log("Interacción realizada");
-
-            hasInteracted = true;
-            hudText.SetActive(false);
+            tutorialText.SetActive(false);
         }
     }
 }

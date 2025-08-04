@@ -6,10 +6,34 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/SistemaBase.unity
+    guid: 642da257558ce1744ae20700054be498
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: e7b7cbdb2bb43de4ca8d6d2b79cd252f
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Pantalla.unity
-    guid: 92d1a1fae4125ab41b152de072f1feef
+    path: Assets/Scenes/Intro.unity
+    guid: a6fe9dc6eca4ec948bd5d7ec96618dfe
+  - enabled: 1
+    path: Assets/Scenes/Nivel1.unity
+    guid: 7b30d9526596dfe488ef1fb4292cb4c7
+  - enabled: 1
+    path: Assets/Scenes/Nivel2.unity
+    guid: ba0d8d2ee0e570f4a9f4171389d972e4
+  - enabled: 1
+    path: Assets/Scenes/Nivel3.unity
+    guid: c4ccac40031cd9445a3a3a67f73facb3
+  - enabled: 1
+    path: Assets/Scenes/Nivel4.unity
+    guid: 777922cea89e6864cad3827cfca93b85
+  - enabled: 0
+    path: Assets/Scenes/Cinematica.unity
+    guid: a129fadd44205684e989b43326856ddf
+  - enabled: 1
+    path: Assets/Scenes/MenuPausa.unity
+    guid: 43d27087396c7614e908a1c1f8df6f57
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
