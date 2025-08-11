@@ -157,6 +157,8 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
+        vidas = 0; // Asegura que las vidas no sean negativas
+        ActualizarUIVida(); // Actualiza la UI de vida al morir
         moveSpeed = 0f; // Detiene el movimiento
         jumpForce = 0f; // Detiene el salto
         rb.velocity = Vector3.zero; // Detiene la física
