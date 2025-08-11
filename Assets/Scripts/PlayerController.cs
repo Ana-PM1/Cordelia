@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform modeloVisual;
     private bool mirandoIzquierda = false;
+
+    public GameObject[] vidasUi;
      
 
     
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+
 
         PlayerData datos = SaveManager.LoadPlayer(); // Carga los datos del jugador guardados
         // Si hay datos guardados y la escena es la misma que la guardada, cargar los datos
@@ -61,6 +64,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Respawn por defecto establecido");
             }
         }
+
+        ActualizarUIVida(); // Actualiza la UI de vida al iniciar
     }
 
     // Update is called once per frame
@@ -82,7 +87,7 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = new Vector3(0, verticalInput, 0) * moveSpeed * Time.deltaTime;
             transform.Translate(movement);
         }
-        else
+        else if(!isOnRope && isGrounded)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             Vector3 movement = new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime;
@@ -104,7 +109,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
-            animator.SetBool("saltando", true);
+            animator.SetBool("saltando", isGrounded);
         }
     }
 
@@ -126,7 +131,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 0;
-            animator.SetBool("saltando", false);
+            animator.SetBool("saltando", !isGrounded);
 
             if (ultimaVelocidadY < umbralDañoCaída)
             {
@@ -142,6 +147,7 @@ public class PlayerController : MonoBehaviour
     {
         vidas -= damage;
         Debug.Log($"{gameObject.name} recibió daño. Vidas restantes: {vidas}");
+        ActualizarUIVida();
         if (vidas <= 0)
         {
             Die();
@@ -151,8 +157,14 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player died");
+        moveSpeed = 0f; // Detiene el movimiento
+        jumpForce = 0f; // Detiene el salto
+        rb.velocity = Vector3.zero; // Detiene la física
+        MirarDireccion(0); // Asegura que el personaje no se mueva al morir
         animator.SetTrigger("morir");
         StartCoroutine(EsperarYMorir());
+        
+        
 
     }
     private IEnumerator EsperarYMorir()
@@ -165,11 +177,36 @@ public class PlayerController : MonoBehaviour
     {
         vidas += cantidad;
         Debug.Log("Vida aumentada. Vidas actuales: " + vidas);
+        ActualizarUIVida();     
     }
 
     
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SiguienteNivel"))
+        {
+            GameManager.Instance.SiguienteNivel();
+        }
+    }
+    private void ActualizarUIVida()
+    {
+        for (int i = 0; i < vidasUi.Length; i++)
+        {
+            if (i < vidas)
+            {
+                vidasUi[i].SetActive(true);
+            }
+            else
+            {
+                vidasUi[i].SetActive(false);
+            }
+        }
+    }
+
 
     
+    
+
 
 
 }

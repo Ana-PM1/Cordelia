@@ -5,15 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Boss
+  - SiguienteNivel
+  - Caminar
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - plataformas
+  - 
   - Water
   - UI
-  - player
+  - 
   - 
   - 
   - 
