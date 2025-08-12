@@ -74,6 +74,10 @@ public class PlayerController : MonoBehaviour
         MovimientoPersonaje();
         SaltarPersonaje();
         ultimaVelocidadY = rb.velocity.y;
+        if(isGrounded)
+        {
+            Debug.Log("El jugador está en el suelo");
+        }
     }
     
     // Movimiento del personaje
