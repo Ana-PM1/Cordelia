@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowLight : MonoBehaviour
 {
     [SerializeField] private Transform objetivo; // el jugador
-    [SerializeField] private Vector3 offset = new Vector3(0, 5, -5); // ajusta según tu escena
+    [SerializeField] private Vector3 offset = new Vector3(0, 5, -5); // ajusta segÃºn tu escena
 
     void LateUpdate()
     {
