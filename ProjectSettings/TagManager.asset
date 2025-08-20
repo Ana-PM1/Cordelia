@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - SiguienteNivel
   - Caminar
+  - Gancho
+  - Palanca
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class TransitionManager : MonoBehaviour
 
     // Referencias a los elementos de UI para la transición
     [Header("Elementos de UI de carga")]
+    public GameObject canvasTelon;
     public GameObject canvasCarga;       
     public Text loadingText;
     
@@ -65,6 +66,9 @@ public class TransitionManager : MonoBehaviour
     // Corrutina para cargar la escena con una transición
     private IEnumerator CargarEscena(string nombreEscena)
     {
+        if (canvasTelon != null)
+            canvasTelon.SetActive(true);
+
         if (canvasCarga != null)
             canvasCarga.SetActive(true);
             //canvasViejo.SetActive(false); 
