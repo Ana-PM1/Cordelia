@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Palanca : MonoBehaviour
 {
     // Son estados que controla el comportamiento de una palanca que activa o desactiva objetos o plataformas en el juego
-    
+
     public enum TipoAccion
     {
         ActivarObjeto,
@@ -19,12 +21,20 @@ public class Palanca : MonoBehaviour
 
     private bool jugadorCerca = false;
 
+    [SerializeField] PlayableDirector playableDirector; // Variable para asignar la cinematica.
+    bool visto = true; // Booleano para evitar que se repita la cinematica si se le vuelve a dar E.
     private void Update()
     {
         // Si el jugador está cerca de la palanca y presiona la tecla E, ejecuta la acción
         if (jugadorCerca && Input.GetKeyDown(KeyCode.E))
         {
             EjecutarAccion();
+
+            if (playableDirector != null && visto == true)
+            {
+                playableDirector.Play();
+                visto = false;
+            }
         }
     }
 
@@ -39,7 +49,7 @@ public class Palanca : MonoBehaviour
                 break;
 
             case TipoAccion.DesactivarObjeto:
-                if (objetivo != null) objetivo.SetActive(false);
+                if (objetivo != null) StartCoroutine(desactivaObjeto());
                 break;
 
             case TipoAccion.ActivarPlataforma:
@@ -72,5 +82,11 @@ public class Palanca : MonoBehaviour
             jugadorCerca = false;
             Debug.Log("Jugador se alejó de la palanca");
         }
+    }
+
+    IEnumerator desactivaObjeto()
+    {
+        yield return new WaitForSeconds(8);
+        objetivo.SetActive(false);
     }
 }
